@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/OtakuGumi/GoPartner.svg?branch=master)](https://travis-ci.org/OtakuGumi/GoPartner)
+
 # GoPartner
 Wechat program inspired by loneliness
 
