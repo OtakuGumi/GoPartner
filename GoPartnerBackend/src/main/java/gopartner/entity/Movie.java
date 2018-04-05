@@ -1,4 +1,4 @@
-package entity;
+package gopartner.entity;
 
 import java.io.Serializable;
 
