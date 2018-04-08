@@ -1,0 +1,5 @@
+package gopartner.enums;
+
+public enum AgeGroup {
+    EIGHTEEN, TWENTYTHREE, TWENTYEIGHT, THIRTYTHREE, THIRTYEIGHT, FOURTYTHREE, FOURTYEIGHT
+}
