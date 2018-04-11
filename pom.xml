@@ -11,6 +11,5 @@
     <modules>
         <module>GoPartnerBackend</module>
         <module>GoPartnerFrontend</module>
-        <module>DesignDocuments</module>
     </modules>
 </project>
