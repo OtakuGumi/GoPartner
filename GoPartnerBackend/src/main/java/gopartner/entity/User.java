@@ -1,9 +1,11 @@
 package gopartner.entity;
 
+import com.google.common.collect.Lists;
 import com.sun.javafx.beans.IDProperty;
 import gopartner.enums.AgeGroup;
 import gopartner.enums.Gender;
 import gopartner.enums.Tag;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,42 +15,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
 public class User implements Serializable{
-    @Getter
     @Id
     private long id;
-    @Getter
-    @Setter
     @Column
     private String name;
-    @Getter
-    @Setter
     @Enumerated
     @Column
     private Gender gender;
-    @Getter
-    @Setter
     @ElementCollection(targetClass = Tag.class)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     @OrderColumn
-    private Tag[] tags;
-    @Getter
-    @Setter
+    private List<Tag> tags;
     @Enumerated
     @Column
     private AgeGroup ageGroup;
-    @Getter
-    @Setter
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @OrderColumn
-    private Movie[] perspectiveMovie;
-    @Getter
-    @Setter
-    @OneToOne
+    private List<Movie> perspectiveMovie;
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn
     private LatLong latLong;
-    @Getter
-    @Setter
-    @OneToOne
-    private PreferredUser preferredUser;
+
+    public Long calculateTagMatch(Tag[] tags) {
+        List<Tag> inputTags = Lists.newArrayList(tags);
+        List<Tag> thisTags = Lists.newArrayList(this.tags);
+        return (Long) inputTags.stream().filter(thisTags::contains).count();
+    }
+
 }

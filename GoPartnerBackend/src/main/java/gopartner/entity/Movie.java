@@ -1,27 +1,17 @@
 package gopartner.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Data
 public class Movie implements Serializable {
-    @Getter
     @Id
-    private long id;
-    @Getter
-    @Setter
+    private Long movieID;
     @Column
     private String name;
-    @Getter
-    @Setter
     @Column
-    private String movieID;
-    @Getter
-    @Setter
-    @ManyToMany
-    @OrderColumn
-    private User[] users;
+    private String description;
 }
